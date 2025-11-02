@@ -1,36 +1,35 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-        <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>NFL Scores Tracker</title>
-                
-                <script src="https://cdn.tailwindcss.com"></script>
-                    
-                    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-                        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-                            
-                            <script src="https://unpkg.com/lucide-react/dist/lucide-react.umd.js" crossorigin></script>
-                                
-                                <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-                                    
-                                    </head>
-                                    <body class="bg-slate-900">
-                                        
-                                        <div id="root"></div>
-                                            
-                                            <script type="text/babel">
-                                                
-                                                // --- Setup: Re-create imports from CDN globals ---
-                                                // We get React's hooks from the global 'React' object
-      const { useState, useEffect } = React;
-      // We get the icons from the global 'lucideReact' object
-      const { RefreshCw, Tv, Calendar, Trophy, Grid } = lucideReact;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFL Scores Tracker</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <script src="https://unpkg.com/lucide-react/dist/lucide-react.umd.js" crossorigin></script>
+    
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-      // --- Your Code Starts Here ---
-      // (This is all your code from the file, with 'import' and 'export' removed)
+</head>
+<body class="bg-slate-900">
+    
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+      // --- Setup: Re-create imports from CDN globals ---
+      const { useState, useEffect } = React;
+      // Accessing lucideReact from the global scope (window)
+      const icons = window.lucideReact || {};
+      const { RefreshCw, Tv, Calendar, Trophy, Grid } = icons;
+
+
+      // --- Your Code Starts Here (Component Definition) ---
       
-      // 
       // Mock data for demonstration
       const mockData = {
         week: {
@@ -46,8 +45,6 @@
                 type: {
                   state: "post",
                   completed: true,
-        
-            // 
                   shortDetail: "Final"
                 }
               },
@@ -57,8 +54,6 @@
                 {
                   homeAway: "away",
                   team: {
-       
-            // 
                     displayName: "Las Vegas Raiders",
                     abbreviation: "LV",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lv.png"
@@ -66,8 +61,6 @@
                   score: "17",
                   records: [{ summary: "4-4" }]
                 },
-         
-            // 
                 {
                   homeAway: "home",
                   team: {
@@ -75,8 +68,6 @@
                     abbreviation: "KC",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/kc.png"
                   },
-              
-            // 
                   score: "31",
                   records: [{ summary: "7-1" }]
                 }
@@ -89,8 +80,6 @@
             competitions: [{
               status: {
                 type: {
-            
-            // 
                   state: "post",
                   completed: true,
                   shortDetail: "Final"
@@ -100,8 +89,6 @@
               venue: { fullName: "AT&T Stadium" },
               competitors: [
                 {
-           
-            // 
                   homeAway: "away",
                   team: {
                     displayName: "Philadelphia Eagles",
@@ -109,8 +96,6 @@
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/phi.png"
                   },
                   score: "28",
-              
-            // 
                   records: [{ summary: "6-2" }]
                 },
                 {
@@ -118,9 +103,7 @@
                   team: {
                     displayName: "Dallas Cowboys",
                     abbreviation: "DAL",
-                    logo: 
-            // 
-            "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png"
+                    logo: "https://a.espncdn.com/i/teamlogos/nfl/500/dal.png"
                   },
                   score: "21",
                   records: [{ summary: "5-3" }]
@@ -132,8 +115,6 @@
             id: "3",
             date: "2025-11-02T20:15Z",
             competitions: [{
-            
-            // 
               status: {
                 type: {
                   state: "in",
@@ -143,8 +124,6 @@
               },
               broadcast: [{ names: ["NBC"] }],
               venue: { fullName: "Lambeau Field" },
-         
-            // 
               competitors: [
                 {
                   homeAway: "away",
@@ -152,8 +131,6 @@
                     displayName: "Detroit Lions",
                     abbreviation: "DET",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/det.png"
-                  
-            // 
                   },
                   score: "14",
                   records: [{ summary: "7-1" }]
@@ -162,8 +139,6 @@
                   homeAway: "home",
                   team: {
                     displayName: "Green Bay Packers",
-              
-            // 
                     abbreviation: "GB",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/gb.png"
                   },
@@ -174,8 +149,6 @@
             }]
           },
           {
-           
-            // 
             id: "4",
             date: "2025-11-03T13:00Z",
             competitions: [{
@@ -186,8 +159,6 @@
                   shortDetail: "1st 12:04"
                 }
               },
-            
-            // 
               broadcast: [{ names: ["CBS"] }],
               venue: { fullName: "Gillette Stadium" },
               competitors: [
@@ -196,8 +167,6 @@
                   team: {
                     displayName: "Buffalo Bills",
                     abbreviation: "BUF",
-           
-            // 
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/buf.png"
                   },
                   score: "7",
@@ -206,8 +175,6 @@
                 {
                   homeAway: "home",
                   team: {
-         
-            // 
                     displayName: "New England Patriots",
                     abbreviation: "NE",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/ne.png"
@@ -215,8 +182,6 @@
                   score: "3",
                   records: [{ summary: "2-6" }]
                 }
-           
-            // 
               ]
             }]
           },
@@ -229,8 +194,6 @@
                   state: "in",
                   completed: false,
                   shortDetail: "1st 8:21"
-        
-            // 
                 }
               },
               broadcast: [{ names: ["FOX"] }],
@@ -239,9 +202,7 @@
                 {
                   homeAway: "away",
                   team: {
-                    
-            // 
-            displayName: "Seattle Seahawks",
+                    displayName: "Seattle Seahawks",
                     abbreviation: "SEA",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sea.png"
                   },
@@ -249,17 +210,13 @@
                   records: [{ summary: "5-3" }]
                 },
                 {
-             
-            // 
                   homeAway: "home",
                   team: {
-                    displayName: "San Francisco 49ers",
+                    displayName: "San Francisco 40ers",
                     abbreviation: "SF",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/sf.png"
                   },
                   score: "3",
-                   
-            // 
                   records: [{ summary: "4-4" }]
                 }
               ]
@@ -272,8 +229,6 @@
               status: {
                 type: {
                   state: "pre",
-             
-            // 
                   completed: false,
                   shortDetail: "4:25 PM"
                 }
@@ -283,8 +238,6 @@
               competitors: [
                 {
                   homeAway: "away",
-           
-            // 
                   team: {
                     displayName: "Tampa Bay Buccaneers",
                     abbreviation: "TB",
@@ -292,8 +245,6 @@
                   },
                   score: "0",
                   records: [{ summary: "5-3" }]
-              
-            // 
                 },
                 {
                   homeAway: "home",
@@ -301,8 +252,6 @@
                     displayName: "Los Angeles Rams",
                     abbreviation: "LAR",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/lar.png"
-                 
-            // 
                   },
                   score: "0",
                   records: [{ summary: "3-5" }]
@@ -315,8 +264,6 @@
             date: "2025-11-04T00:20Z",
             competitions: [{
               status: {
-              
-            // 
                 type: {
                   state: "pre",
                   completed: false,
@@ -326,8 +273,6 @@
               broadcast: [{ names: ["ESPN"] }],
               venue: { fullName: "Raymond James Stadium" },
               competitors: [
-          
-            // 
                 {
                   homeAway: "away",
                   team: {
@@ -335,8 +280,6 @@
                     abbreviation: "BAL",
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/bal.png"
                   },
-                
-            // 
                   score: "0",
                   records: [{ summary: "6-2" }]
                 },
@@ -345,8 +288,6 @@
                   team: {
                     displayName: "Tampa Bay Buccaneers",
                     abbreviation: "TB2",
-         
-            // 
                     logo: "https://a.espncdn.com/i/teamlogos/nfl/500/tb.png"
                   },
                   score: "0",
@@ -358,7 +299,6 @@
         ]
       };
       
-      // 
       // Mock confidence picks for 5 players
       const mockPicks = {
         "Alice": {
@@ -372,8 +312,6 @@
         },
         "Bob": {
           "1": { pick: "KC", confidence: 5 },
-         
-            // 
           "2": { pick: "DAL", confidence: 7 },
           "3": { pick: "GB", confidence: 6 },
           "4": { pick: "BUF", confidence: 4 },
@@ -385,9 +323,7 @@
           "1": { pick: "LV", confidence: 2 },
           "2": { pick: "PHI", confidence: 7 },
           "3": { pick: "DET", confidence: 6 },
-          "4": { pick: "BUF", 
-            // 
-            confidence: 5 },
+          "4": { pick: "BUF", confidence: 5 },
           "5": { pick: "SF", confidence: 4 },
           "6": { pick: "TB", confidence: 3 },
           "7": { pick: "TB2", confidence: 1 }
@@ -399,8 +335,6 @@
           "4": { pick: "NE", confidence: 1 },
           "5": { pick: "SEA", confidence: 4 },
           "6": { pick: "LAR", confidence: 3 },
-         
-            // 
           "7": { pick: "BAL", confidence: 2 }
         },
         "Ethan": {
@@ -414,68 +348,66 @@
         }
       };
 
-      // 
-      // We remove 'export default' here
       function NFLScoresTracker() {
         const [games, setGames] = useState([]);
         const [loading, setLoading] = useState(true);
-            // 
-            const [error, setError] = useState(null);
+        const [error, setError] = useState(null);
         const [lastUpdate, setLastUpdate] = useState(null);
         const [weekInfo, setWeekInfo] = useState(null);
-        const [useMockData, setUseMockData] = useState(false);
-            // 
-            const [activeTab, setActiveTab] = useState('confidence');
+        
+        // Starts with mock data enabled to guarantee display
+        const [useMockData, setUseMockData] = useState(true); 
+        
+        const [activeTab, setActiveTab] = useState('confidence');
         const [confidenceView, setConfidenceView] = useState('overview');
         const [includeLiveGames, setIncludeLiveGames] = useState(false);
-            // 
-            const fetchScores = async () => {
+            
+        const fetchScores = async () => {
           try {
             setLoading(true);
             setError(null);
-            // 
+            
             if (useMockData) {
               await new Promise(resolve => setTimeout(resolve, 500));
               setGames(mockData.events);
               setWeekInfo(mockData.week);
               setLastUpdate(new Date());
-            // 
+            
             } else {
               const espnUrl = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard';
               
               const response = await fetch(espnUrl);
-            // 
-            if (!response.ok) {
+            
+              if (!response.ok) {
                 throw new Error('Failed to fetch scores from ESPN');
-            // 
-            }
+              }
               
               const data = await response.json();
-            // 
-            setGames(data.events || []);
+            
+              setGames(data.events || []);
               setWeekInfo(data.week);
               setLastUpdate(new Date());
             }
           } catch (err) {
             console.error('Fetch error:', err);
-            // 
+            
             setError('Unable to fetch live data from ESPN. Please try again or use mock data.');
-            // 
+            
             } finally {
             setLoading(false);
           }
         };
-        // 
+        
         useEffect(() => {
           fetchScores();
           const interval = setInterval(fetchScores, 30000);
           return () => clearInterval(interval);
         }, [useMockData]);
-        // 
+        
         const calculateConfidencePoints = () => {
           const results = {};
-            // 
-            Object.keys(mockPicks).forEach(player => {
+            
+          Object.keys(mockPicks).forEach(player => {
             results[player] = { total: 0, correct: 0, possible: 0, details: [] };
             
             games.forEach(game => {
@@ -486,7 +418,6 @@
               const isComplete = competition.status.type.completed;
               const isLiveGame = competition.status.type.state === 'in';
          
-            // 
               
               results[player].possible += pick.confidence;
               
@@ -496,18 +427,16 @@
               let winner = null;
               if (isComplete || (includeLiveGames && isLiveGame)) {
                 if (parseInt(homeTeam.score) > parseInt(awayTeam.score)) 
-            // 
-            {
+                {
                   winner = homeTeam.team.abbreviation;
                 } else if (parseInt(awayTeam.score) > parseInt(homeTeam.score)) {
                   winner = awayTeam.team.abbreviation;
-            // 
-            }
+                }
               }
               
               const isCorrect = winner === pick.pick;
-            // 
-            results[player].details.push({
+            
+              results[player].details.push({
                 gameId: game.id,
                 pick: pick.pick,
                 confidence: pick.confidence,
@@ -516,34 +445,32 @@
                 homeTeam: homeTeam.team.abbreviation,
                 awayTeam: awayTeam.team.abbreviation,
                 score: (isComplete || (includeLiveGames && 
-            // 
-            isLiveGame)) ? `${awayTeam.score}-${homeTeam.score}${isLiveGame ? ' (Live)' : ''}` : 'Pending',
+                isLiveGame)) ? `${awayTeam.score}-${homeTeam.score}${isLiveGame ? ' (Live)' : ''}` : 'Pending',
                 isLive: isLiveGame
               });
-            // 
-            if ((isComplete || (includeLiveGames && isLiveGame)) && isCorrect) {
+            
+              if ((isComplete || (includeLiveGames && isLiveGame)) && isCorrect) {
                 results[player].total += pick.confidence;
-            // 
-            results[player].correct++;
+                results[player].correct++;
               }
             });
           });
           
           return results;
         };
-        // 
+        
         const getGameStatus = (competition) => {
           const status = competition.status;
           if (status.type.completed) return 'FINAL';
-            // 
-            if (status.type.state === 'in') return status.type.shortDetail;
+            
+          if (status.type.state === 'in') return status.type.shortDetail;
           return status.type.shortDetail || 'Scheduled';
         };
-        // 
+        
         const isLive = (competition) => {
           return competition.status.type.state === 'in';
         };
-        // 
+        
         const gamesByDate = games.reduce((acc, game) => {
           const date = new Date(game.date).toLocaleDateString('en-US', { 
             weekday: 'long',
@@ -554,11 +481,11 @@
           acc[date].push(game);
           return acc;
         }, {});
-        // 
+        
         const confidenceResults = calculateConfidencePoints();
         const leaderboard = Object.entries(confidenceResults)
           .sort((a, b) => b[1].total - a[1].total);
-        // 
+        
         return (
           <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
             {/* Header */}
@@ -568,14 +495,12 @@
                   <div className="flex items-center gap-3">
                     <Tv className="w-8 h-8 text-blue-400" />
                    
-            // 
                     <div>
                       <h1 className="text-2xl font-bold text-white">NFL Tracker</h1>
                       {weekInfo && (
                         <div className="flex items-center gap-2 text-slate-400 text-sm mt-1">
                           <Calendar className="w-4 h-4" />
                 
-            // 
                           Week {weekInfo.number}
                         </div>
                       )}
@@ -584,30 +509,25 @@
                   <div className="flex gap-2">
                     <button
        
-            // 
                       onClick={() => setUseMockData(!useMockData)}
                       className={`px-3 py-2 text-sm rounded-lg transition-colors ${
                         useMockData 
                           ?
-            // 
-            'bg-yellow-600 hover:bg-yellow-700 text-white' 
+                          'bg-yellow-600 hover:bg-yellow-700 text-white' 
                           : 'bg-slate-700 hover:bg-slate-600 text-slate-300'
                       }`}
                     >
                       {useMockData ?
-            // 
-            'Mock' : 'Live'}
+                      'Mock' : 'Live'}
                     </button>
                     <button
                       onClick={fetchScores}
                       disabled={loading}
                       className="flex items-center gap-2 px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-600 text-white rounded-lg transition-colors text-sm"
                  
-            // 
                     >
                       <RefreshCw className={`w-4 h-4 ${loading ?
-            // 
-            'animate-spin' : ''}`} />
+                      'animate-spin' : ''}`} />
                     </button>
                   </div>
                 </div>
@@ -616,13 +536,11 @@
                 <div className="flex gap-2 mt-4">
                   <button
                     
-            // 
-            onClick={() => setActiveTab('confidence')}
+                    onClick={() => setActiveTab('confidence')}
                     className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
                       activeTab === 'confidence'
                         ?
-            // 
-            'bg-blue-600 text-white'
+                        'bg-blue-600 text-white'
                         : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                     }`}
                   >
@@ -630,14 +548,12 @@
                     Confidence Pool
                   </button>
               
-            // 
                   <button
                     onClick={() => setActiveTab('scores')}
                     className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                       activeTab === 'scores'
                         ?
-            // 
-            'bg-blue-600 text-white'
+                        'bg-blue-600 text-white'
                         : 'bg-slate-700/50 text-slate-300 hover:bg-slate-700'
                     }`}
                   >
@@ -648,7 +564,6 @@
             </div>
 
         
-            // 
             {/* Content */}
             <div className="max-w-7xl mx-auto px-4 py-6">
               {error && (
@@ -658,8 +573,7 @@
               )}
 
               {loading && games.length === 0 ?
-            // 
-            (
+              (
                 <div className="flex items-center justify-center py-20">
                   <div className="text-center">
                     <RefreshCw className="w-12 h-12 text-blue-400 animate-spin mx-auto mb-4" />
@@ -667,8 +581,7 @@
                   </div>
                 </div>
               ) : activeTab === 'confidence' ?
-            // 
-            (
+              (
                 <div>
                   {/* Confidence Pool Sub-tabs */}
                   <div className="flex items-center justify-between mb-6">
@@ -676,13 +589,11 @@
                       <button
                         onClick={() => setConfidenceView('overview')}
             
-            // 
                         className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
                           confidenceView === 'overview'
                             ? 'bg-slate-700 text-white'
                             : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50'
                    
-            // 
                         }`}
                       >
                         <Grid className="w-4 h-4" />
@@ -690,20 +601,17 @@
                       </button>
                       <button
          
-            // 
                         onClick={() => setConfidenceView('leaderboard')}
                         className={`px-4 py-2 rounded-lg font-medium transition-colors flex items-center gap-2 ${
                           confidenceView === 'leaderboard'
                             ? 'bg-slate-700 text-white'
                  
-            // 
                             : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50'
                         }`}
                       >
                         <Trophy className="w-4 h-4" />
                         Leaderboard
                    
-            // 
                       </button>
                     </div>
                     
@@ -711,176 +619,140 @@
                     <button
                       onClick={() => setIncludeLiveGames(!includeLiveGames)}
                       className={`px-4 py-2 
-            // 
-            rounded-lg font-medium transition-colors flex items-center gap-2 text-sm ${
+                      rounded-lg font-medium transition-colors flex items-center gap-2 text-sm ${
                         includeLiveGames
                           ?
-            // 
-            'bg-green-600 hover:bg-green-700 text-white'
+                          'bg-green-600 hover:bg-green-700 text-white'
                           : 'bg-slate-800/50 text-slate-400 hover:bg-slate-700/50 border border-slate-700'
                       }`}
                     >
                       <span className={`w-2 h-2 rounded-full ${includeLiveGames ?
-            // 
-            'bg-white animate-pulse' : 'bg-slate-500'}`}></span>
+                      'bg-white animate-pulse' : 'bg-slate-500'}`}></span>
                       {includeLiveGames ?
-            // 
-            'Including Live Games' : 'Final Games Only'}
+                      'Including Live Games' : 'Final Games Only'}
                     </button>
                   </div>
 
                   {confidenceView === 'overview' ?
-            // 
-            (
+                  (
                     <div className="bg-slate-800/50 rounded-lg border border-slate-700 overflow-hidden">
                       <div className="overflow-x-auto">
                         <table className="w-full">
                           <thead>
                             <tr className="bg-slate-700/50 border-b 
-                                            // 
-                                                border-slate-700">
+                            border-slate-700">
                               <th className="px-4 py-3 text-left text-white font-semibold text-sm">Game</th>
                               <th className="px-4 py-3 text-left text-white font-semibold text-sm">Result</th>
                               {Object.entries(confidenceResults).sort((a, b) => b[1].total - a[1].total).map(([player, data]) => (
               
-            // 
                                 <th key={player} className="px-4 py-3 text-center border-l border-slate-700">
                                   <div className="text-white font-semibold text-sm">{player}</div>
                                   <div className="text-yellow-400 text-lg font-bold mt-1">{data.total}</div>
                    
-            // 
                                   <div className="text-slate-400 text-xs">{data.correct}/{games.length}</div>
                                 </th>
                               ))}
                             </tr>
                  
-            // 
                           </thead>
                           <tbody>
                             {games.map((game) => {
                               const competition = game.competitions[0];
-            // 
-            const homeTeam = competition.competitors.find(t => t.homeAway === 'home');
+                              const homeTeam = competition.competitors.find(t => t.homeAway === 'home');
                               const awayTeam = competition.competitors.find(t => t.homeAway === 'away');
                               const isComplete = competition.status.type.completed;
-            // 
-            const isLiveGame = competition.status.type.state === 'in';
+                              const isLiveGame = competition.status.type.state === 'in';
                               
                               let winner = null;
-            // 
-            if (isComplete || (includeLiveGames && isLiveGame)) {
+                              if (isComplete || (includeLiveGames && isLiveGame)) {
                                 if (parseInt(homeTeam.score) > parseInt(awayTeam.score)) {
                                   winner = homeTeam.team.abbreviation;
-            // 
-            } else if (parseInt(awayTeam.score) > parseInt(homeTeam.score)) {
+                                } else if (parseInt(awayTeam.score) > parseInt(homeTeam.score)) {
                                   winner = awayTeam.team.abbreviation;
-            // 
-            }
+                                }
                               }
 
                               return (
                                 <tr key={game.id} className="border-b border-slate-700/50 hover:bg-slate-700/20">
                            
-            // 
                                   <td className="px-4 py-3">
                                     <div className="text-white text-sm font-medium">
                                       {awayTeam.team.abbreviation} @ {homeTeam.team.abbreviation}
                               
-            // 
                                     </div>
                                   </td>
                                   <td className="px-4 py-3">
                                     <div className="text-sm">
            
-            // 
                                       {isComplete ? (
                                         <span className="text-white font-semibold">{awayTeam.score}-{homeTeam.score}</span>
                                       ) : isLiveGame 
-            // 
-            ? (
+                                      ? (
                                         <span className="text-green-400 font-semibold">{awayTeam.score}-{homeTeam.score} 🔴</span>
                                       ) : (
                                   
-            // 
                                         <span className="text-slate-400">-</span>
                                       )}
                                     </div>
                                   </td>
          
-            // 
                                   {Object.entries(confidenceResults).sort((a, b) => b[1].total - a[1].total).map(([player, data]) => {
                                     const picks = mockPicks[player];
-            // 
-            const pick = picks[game.id];
+                                    const pick = picks[game.id];
                                     if (!pick) return <td key={player} className="px-4 py-3 text-center text-slate-500 border-l border-slate-700/50">-</td>;
-            // 
-            const isCorrect = (isComplete || (includeLiveGames && isLiveGame)) && winner === pick.pick;
-            // 
-            const isWrong = (isComplete || (includeLiveGames && isLiveGame)) && winner && winner !== pick.pick;
-            // 
-            return (
+                                    const isCorrect = (isComplete || (includeLiveGames && isLiveGame)) && winner === pick.pick;
+                                    const isWrong = (isComplete || (includeLiveGames && isLiveGame)) && winner && winner !== pick.pick;
+                                    return (
                                       <td key={player} className="px-4 py-3 text-center border-l border-slate-700/50">
                                         <div className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-sm font-semibold ${
                         
-            // 
                                         isCorrect ? 'bg-green-500/20 text-green-400 border border-green-500/40' :
                                           isWrong ? 'bg-red-500/20 text-red-400 border border-red-500/40' :
                                         
-            // 
                                         'bg-slate-700/50 text-slate-300 border border-slate-600'
                                         }`}>
                                           <span>{pick.pick}</span>
                                    
-            // 
                                           <span className={`text-xs px-1.5 py-0.5 rounded ${
                                             isCorrect ? 'bg-green-500 text-white' :
                                             isWrong ? 'bg-red-500 text-white' 
-            // 
-            :
+                                            :
                                             'bg-slate-600 text-slate-200'
                                           }`}>
                                    
-            // 
                                             {pick.confidence}
                                           </span>
                                         </div>
                                        
-            // 
                                       </td>
                                     );
-            // 
-            })}
+                                  })}
                                 </tr>
                               );
-            // 
-            })}
+                            })}
                           </tbody>
                         </table>
                       </div>
                       
                       {/* Legend */}
                   
-            // 
                       <div className="px-4 py-3 bg-slate-700/30 border-t border-slate-700 flex items-center gap-6 text-xs text-slate-400">
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-green-500/20 border border-green-500/40 rounded"></div>
                           <span>Correct Pick</span>
                         
-            // 
-            </div>
+                        </div>
                         <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-red-500/20 border border-red-500/40 rounded"></div>
                           <span>Wrong Pick</span>
                         </div>
                     
-            // 
                       <div className="flex items-center gap-2">
                           <div className="w-3 h-3 bg-slate-700/50 border border-slate-600 rounded"></div>
                           <span>Pending</span>
                         </div>
                         <div className="flex items-center gap-2">
               
-            // 
                           <span className="text-green-400">🔴</span>
                           <span>Live Game</span>
                         </div>
@@ -888,49 +760,40 @@
                     </div>
                   ) : (
           
-            // 
                     <div className="space-y-6">
                       {/* Leaderboard */}
                       <div className="bg-slate-800/50 rounded-lg border border-slate-700 p-6">
                         <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
                           <Trophy className="w-6 h-6 text-yellow-500" />
        
-            // 
                           Leaderboard
                         </h2>
                         <div className="space-y-2">
                           {leaderboard.map(([player, data], idx) => (
                           
-            // 
                           <div key={player} className="flex items-center justify-between bg-slate-700/30 rounded-lg p-3">
                               <div className="flex items-center gap-3">
                                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
                                   idx === 
-            // 
-            0 ? 'bg-yellow-500 text-slate-900' :
+                                  0 ? 'bg-yellow-500 text-slate-900' :
                                   idx === 1 ?
-            // 
-            'bg-slate-400 text-slate-900' :
+                                  'bg-slate-400 text-slate-900' :
                                   idx === 2 ?
-            // 
-            'bg-amber-700 text-white' :
+                                  'bg-amber-700 text-white' :
                                   'bg-slate-600 text-slate-300'
                                 }`}>
                                   {idx + 1}
                    
-            // 
                                 </div>
                                 <span className="text-white font-semibold">{player}</span>
                               </div>
                               <div className="text-right">
                 
-            // 
                                 <div className="text-2xl font-bold text-white">{data.total}</div>
                                 <div className="text-xs text-slate-400">{data.correct} correct / {data.possible} possible</div>
                               </div>
                             </div>
          
-            // 
                           ))}
                         </div>
                       </div>
@@ -938,81 +801,64 @@
                       {/* Detailed Picks */}
                       <div className="space-y-4">
                    
-            // 
                         {Object.entries(confidenceResults).map(([player, data]) => (
                           <div key={player} className="bg-slate-800/50 rounded-lg border border-slate-700 overflow-hidden">
                             <div className="bg-slate-700/50 px-4 py-3 flex items-center justify-between">
                               <span className="font-bold text-white">{player}</span>
                   
-            // 
                               <span className="text-sm text-slate-300">{data.total} points</span>
                             </div>
                             <div className="p-4">
                               <div className="grid grid-cols-1 gap-2">
                    
-            // 
                                 {data.details.map((detail, idx) => (
                                   <div key={idx} className={`flex items-center justify-between p-2 rounded ${
                                     detail.correct === true ?
-            // 
-            'bg-green-500/10 border border-green-500/30' :
+                                    'bg-green-500/10 border border-green-500/30' :
                                     detail.correct === false ?
-            // 
-            'bg-red-500/10 border border-red-500/30' :
+                                    'bg-red-500/10 border border-red-500/30' :
                                     'bg-slate-700/20'
                                   }`}>
                                     <div className="flex items-center gap-3">
             
-            // 
                                       <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
                                         detail.correct === true ?
-            // 
-            'bg-green-500 text-white' :
+                                        'bg-green-500 text-white' :
                                         detail.correct === false ?
-            // 
-            'bg-red-500 text-white' :
+                                        'bg-red-500 text-white' :
                                         'bg-slate-600 text-slate-300'
                                       }`}>
                                      
-            // 
                                         {detail.confidence}
                                       </span>
                                       <span className="text-white text-sm font-medium">{detail.awayTeam} @ {detail.homeTeam}</span>
                                   
-            // 
                                       {detail.isLive && includeLiveGames && (
                                         <span className="text-xs text-green-400 font-semibold">LIVE</span>
                                       )}
                                      
-            // 
                                     </div>
                                     <div className="flex items-center gap-3">
                                       <span className="text-slate-300 text-sm">{detail.score}</span>
                                 
-            // 
                                       <span className={`text-sm font-semibold px-2 py-1 rounded ${
                                         detail.correct === true ?
-            // 
-            'text-green-400' :
+                                        'text-green-400' :
                                         detail.correct === false ?
-            // 
-            'text-red-400' :
+                                        'text-red-400' :
                                         'text-slate-400'
                                       }`}>
                                        
-            // 
                                         Pick: {detail.pick}
                                       </span>
                                     </div>
                                   </div>
               
-            // 
                                 ))}
                               </div>
                             </div>
                           </div>
                       
-            // 
                         ))}
                       </div>
                     </div>
@@ -1022,7 +868,6 @@
                 <div className="space-y-6">
                   {Object.entries(gamesByDate).map(([date, dateGames]) => (
                 
-            // 
                   <div key={date}>
                       <h2 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
                         <div className="w-1 h-5 bg-blue-500 rounded"></div>
@@ -1030,80 +875,66 @@
                       </h2>
 
                       
-            // 
-            <div className="space-y-3">
+                      <div className="space-y-3">
                         {dateGames.map((game) => {
                           const competition = game.competitions[0];
-            // 
-            const homeTeam = competition.competitors.find(t => t.homeAway === 'home');
+                          const homeTeam = competition.competitors.find(t => t.homeAway === 'home');
                           const awayTeam = competition.competitors.find(t => t.homeAway === 'away');
                           const live = isLive(competition);
-            // 
-            const status = getGameStatus(competition);
+                          const status = getGameStatus(competition);
 
                           return (
                             <div
                               key={game.id}
                               className={`bg-slate-800/50 rounded-lg border ${
                             
-            // 
                               live ? 'border-green-500' : 'border-slate-700'
                               } overflow-hidden`}
                             >
                               <div className={`px-3 py-1.5 text-xs font-semibold text-center ${
                      
-            // 
                                   live ? 'bg-green-500 text-white' : 'bg-slate-700/50 text-slate-300'
                               }`}>
                                 {live && <span className="inline-block w-1.5 h-1.5 bg-white rounded-full mr-1.5 animate-pulse" />}
                              
-            // 
                                 {status}
                               </div>
 
                               <div className="p-4">
                                 <div className="flex items-center justify-between mb-2">
                         
-            // 
                                   <div className="flex items-center gap-3 flex-1">
                                     <img src={awayTeam.team.logo} alt={awayTeam.team.abbreviation} className="w-8 h-8" />
                                     <span className="text-white font-semibold">{awayTeam.team.displayName}</span>
                          
-            // 
                                     <span className="text-slate-400 text-sm">({awayTeam.records?.[0]?.summary})</span>
                                   </div>
                                   <span className="text-2xl font-bold text-white">{awayTeam.score}</span>
                                 </div>
 
         
-            // 
                                 <div className="flex items-center justify-between">
                                   <div className="flex items-center gap-3 flex-1">
                                     <img src={homeTeam.team.logo} alt={homeTeam.team.abbreviation} className="w-8 h-8" />
             
-            // 
                                     <span className="text-white font-semibold">{homeTeam.team.displayName}</span>
                                     <span className="text-slate-400 text-sm">({homeTeam.records?.[0]?.summary})</span>
                                   </div>
                     
-            // 
                                   <span className="text-2xl font-bold text-white">{homeTeam.score}</span>
                                 </div>
 
                                 {competition.broadcast?.[0] && (
                                   <div 
-            // 
-            className="mt-2 pt-2 border-t border-slate-700/50 text-slate-400 text-xs">
+                                  className="mt-2 pt-2 border-t border-slate-700/50 text-slate-400 text-xs">
                                     📺 {competition.broadcast[0].names.join(', ')}
                                   </div>
                                 )}
                
-            // 
                               </div>
                             </div>
                           );
-            // 
-            })}
+                        })}
                       </div>
                     </div>
                   ))}
@@ -1112,15 +943,29 @@
             </div>
           </div>
         );
-      // 
       }
 
-      // --- Render the App ---
-      // This finds the 'root' div and tells React to render your component inside it.
-      const { createRoot } = ReactDOM;
-      const container = document.getElementById('root');
-      const root = createRoot(container);
-      root.render(React.createElement(NFLScoresTracker));
+      // --- Render the App with Debugging ---
+      try {
+        console.log('Starting React application rendering...');
+        const { createRoot } = ReactDOM;
+        const container = document.getElementById('root');
+        
+        if (container) {
+            const root = createRoot(container);
+            root.render(React.createElement(NFLScoresTracker));
+            console.log('React application rendered successfully (or the render process began).');
+        } else {
+             console.error('Render Error: Could not find element with id="root".');
+        }
+      } catch (e) {
+        console.error('Critical Render Error: App crashed before mounting.', e);
+        // You can add a fallback message here if needed
+        const rootContainer = document.getElementById('root');
+        if (rootContainer) {
+            rootContainer.innerHTML = '<div style="color: red; padding: 20px; font-family: sans-serif; background: #292524; border-radius: 8px;"><h1>App Failed to Load</h1><p>Check the **browser console** for the detailed JavaScript error.</p><p>Error: ' + e.message + '</p></div>';
+        }
+      }
 
     </script>
 </body>
